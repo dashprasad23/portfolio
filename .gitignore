@@ -51,9 +51,6 @@ temp/
 /karma-*.xml
 /test-results/
 
-# Compiled CSS from SCSS
-*.css
-*.css.map
 
 # Build output from different environments
 /build/
