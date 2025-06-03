@@ -1,0 +1,66 @@
+<section id="contact" class="w-full bg-blue-50 py-20 px-6 flex flex-col items-center">
+  <h2 class="text-3xl font-bold text-blue-600 mb-2">Let's Connect</h2>
+  <p class="text-gray-700 text-center max-w-2xl mb-10">
+    Have a project in mind, a job opportunity, or just want to say hello? I’d love to hear from you!
+  </p>
+
+  <!-- Contact Form -->
+  <form [formGroup]="contactForm" (ngSubmit)="sendEmail()"
+    class="max-w-xl w-full bg-white p-6 rounded-lg shadow space-y-4">
+    <div>
+      <label class="block text-sm font-medium text-gray-700">Name</label>
+      <input formControlName="name" type="text" class="w-full border px-4 py-2 rounded"
+        [class.border-red-500]="isSubmitted && contactForm.get('name')?.invalid" placeholder="Your Name" />
+      <div *ngIf="isSubmitted && contactForm.get('name')?.invalid" class="text-red-600 text-xs mt-1">
+        Name is required
+      </div>
+    </div>
+
+    <div>
+      <label class="block text-sm font-medium text-gray-700">Email</label>
+      <input formControlName="email" type="email" class="w-full border px-4 py-2 rounded"
+        [class.border-red-500]="isSubmitted && contactForm.get('email')?.invalid" placeholder="you@example.com" />
+      <div *ngIf="isSubmitted && contactForm.get('email')?.invalid" class="text-red-600 text-xs mt-1">
+        Valid email is required
+      </div>
+    </div>
+
+    <div>
+      <label class="block text-sm font-medium text-gray-700">Message</label>
+      <textarea formControlName="message" rows="4" class="w-full border px-4 py-2 rounded"
+        [class.border-red-500]="isSubmitted && contactForm.get('message')?.invalid"
+        placeholder="Your message..."></textarea>
+      <div *ngIf="isSubmitted && contactForm.get('message')?.invalid" class="text-red-600 text-xs mt-1">
+        Message is required
+      </div>
+    </div>
+
+    <button type="submit" class="w-full bg-blue-600 text-white py-2 rounded font-semibold hover:bg-blue-700 transition">
+      Send Message
+    </button>
+
+    <!-- Alerts -->
+    <div *ngIf="isSuccess" class="text-green-600 text-sm mt-4">✅ Message sent successfully!</div>
+    <div *ngIf="isError" class="text-red-600 text-sm mt-4">❌ Failed to send message. Try again.</div>
+  </form>
+
+
+  <!-- Social Links -->
+  <div class="flex gap-6 mt-10 text-2xl text-blue-600">
+    <a href="https://github.com/dashprasad23" target="_blank" class="hover:text-blue-800">
+      <i class="fab fa-github"></i>
+    </a>
+    <a href="https://in.linkedin.com/in/debi-prasad-d-590569bb" target="_blank" class="hover:text-blue-800">
+      <i class="fab fa-linkedin"></i>
+    </a>
+    <a href="mailto:dashprasad21@gmail.com" class="hover:text-blue-800">
+      <i class="fas fa-envelope"></i>
+    </a>
+  </div>
+
+  <!-- Optional Resume Button -->
+  <a href="resume.pdf" target="_blank"
+    class="mt-6 inline-block bg-white text-blue-600 border border-blue-600 px-6 py-2 rounded-md hover:bg-blue-600 hover:text-white transition">
+    📄 Download Resume
+  </a>
+</section>
